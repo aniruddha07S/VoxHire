@@ -1,0 +1,53 @@
+@import "../styles/globals.css";
+
+@layer base {
+  :root {
+    @apply font-sans;
+  }
+
+  html,
+  body {
+    @apply m-0 min-h-screen min-w-[320px] bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+/* Deep ambient background glow — teal/cyan inspired */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 15% 0%, rgba(20, 184, 166, 0.12), transparent 70%),
+    radial-gradient(50% 50% at 85% 15%, rgba(6, 182, 212, 0.08), transparent 70%),
+    radial-gradient(60% 60% at 50% 100%, rgba(16, 185, 129, 0.06), transparent 70%);
+}
+
+/* Floating particle system — rendered via JS but styled here */
+.particle {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(45, 212, 191, 0.4);
+  pointer-events: none;
+  z-index: 0;
+  animation: particle-float var(--duration, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@media (prefers-reduced-motion) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+  }
+}
