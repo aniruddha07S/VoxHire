@@ -126,7 +126,7 @@ Implemented in `apps/frontend/src/components/Interview.tsx`.
 
 Implemented in `apps/backend/result.ts`.
 
-- After the interview, frontend polls `GET /api/v1/result/:interviewId`.
+- After the interview is done, frontend polls `GET /api/v1/result/:interviewId`.
 - If the interview is not yet `Done`, the backend calls Gemini with the full transcript.
 - The Gemini prompt asks for JSON output containing `feedback` and `score`.
 - The response is validated with a Zod schema.
